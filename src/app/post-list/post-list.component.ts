@@ -1,4 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Post} from '../models/Post.models';
+import {Subscription} from 'rxjs';
+import {PostsService} from '../services/posts.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-post-list',
@@ -11,15 +15,23 @@ export class PostListComponent implements OnInit {
   @Input() postContent: string;
   @Input() postLoveIts: number;
   @Input() postDate: Date;
+  @Input() postIndex: number;
 
-  constructor() { }
+  posts: Post[];
+  postsSubscription: Subscription;
+
+  constructor(private postsService: PostsService) { }
 
   onLoveit() {
-    this.postLoveIts += 1;
+    this.postsService.loveIt(this.postIndex);
   }
 
   onDontLoveit() {
-    this.postLoveIts -= 1;
+    this.postsService.dontLoveIt(this.postIndex);
+  }
+
+  onDelete() {
+    this.postsService.removePost(this.postIndex);
   }
 
   getColor() {

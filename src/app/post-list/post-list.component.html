@@ -4,6 +4,13 @@
     <span><p style="color: gray"><em>{{ postDate | date: 'MM/dd/yyyy, h:mma' }}</em></p></span>
   </div>
   <p>{{ postContent }}</p>
-  <button class="btn btn-success" (click)="onLoveit()">Love it!</button>
-  <button class="btn btn-danger" (click)="onDontLoveit()" style="margin-left: 5px">Don't love it!</button>
+  <div class="myButtons" style="display: flex; justify-content: space-between;">
+    <span>
+      <button class="btn btn-success" (click)="onLoveit()">Love it!</button>
+      <button class="btn btn-danger" (click)="onDontLoveit()" style="margin-left: 5px">Don't love it!</button>
+    </span>
+    <span>
+      <button class="btn btn-danger" (click)="onDelete()">Supprimer</button>
+    </span>
+  </div>
 </li>
