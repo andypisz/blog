@@ -4,6 +4,7 @@ export class Post {
   loveIts: number;
   title: string;
   content: string;
-  constructor() {
+  constructor(title: string,
+  content: string) {
   }
 }
